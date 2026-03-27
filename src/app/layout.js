@@ -1,5 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 export const metadata = {
 	title: "Slave-Free Alliance",
@@ -14,7 +16,9 @@ export default function RootLayout({ children }) {
 				<script async src="https://player.vimeo.com/api/player.js"></script>
 			</head>
 			<body className={`antialiased overflow-x-hidden w-[100vw]`}>
-				{children}
+				<Header />
+				<div className="overflow-x-hidden">{children}</div>
+				<Footer />
 			</body>
 		</html>
 	);
