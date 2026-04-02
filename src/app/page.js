@@ -8,5 +8,11 @@ export default async function Home() {
 		params: { slug: "home" },
 	});
 
-	return <PageBuilder blocks={page?.pageBuilder} />;
+	return (
+		<PageBuilder
+			blocks={page?.pageBuilder}
+			documentId={page?._id}
+			documentType="page"
+		/>
+	);
 }

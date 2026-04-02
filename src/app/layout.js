@@ -1,15 +1,18 @@
+import { draftMode } from "next/headers";
 import localFont from "next/font/local";
 import "./globals.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { SanityLive } from "../sanity/lib/live";
+import { VisualEditing } from "next-sanity/visual-editing";
 
 export const metadata = {
 	title: "Slave-Free Alliance",
 	description: "Increase your resilience to modern slavery",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+	const { isEnabled: isDraftMode } = await draftMode();
 	return (
 		<html lang="en">
 			<head>
@@ -21,6 +24,7 @@ export default function RootLayout({ children }) {
 				<div className="overflow-x-hidden">{children}</div>
 				<Footer />
 				<SanityLive />
+				{isDraftMode && <VisualEditing />}
 			</body>
 		</html>
 	);

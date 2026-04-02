@@ -38,5 +38,11 @@ export default async function Page({ params }) {
 
 	if (!page) notFound();
 
-	return <PageBuilder blocks={page?.pageBuilder} />;
+	return (
+		<PageBuilder
+			blocks={page?.pageBuilder}
+			documentId={page?._id}
+			documentType="page"
+		/>
+	);
 }

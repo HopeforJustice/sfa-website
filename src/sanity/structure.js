@@ -5,9 +5,7 @@ export const structure = (S) =>
 		.items([
 			S.listItem()
 				.title("Pages")
-				.child(
-					S.documentTypeList("page").title("Pages"),
-				),
+				.child(S.documentTypeList("page").title("Pages")),
 			S.divider(),
 			S.listItem()
 				.title("Navigation")

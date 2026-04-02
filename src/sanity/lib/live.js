@@ -10,6 +10,8 @@ export const { sanityFetch, SanityLive } = defineLive({
 		// https://www.sanity.io/docs/api-versioning
 		apiVersion: "vX",
 	}),
-	serverToken: false,
-	browserToken: false,
+	// A read token is required for the Presentation tool and draft mode.
+	// Add SANITY_API_READ_TOKEN to your .env.local (server-only, never exposed to browser).
+	serverToken: process.env.SANITY_API_READ_TOKEN,
+	browserToken: process.env.NEXT_PUBLIC_SANITY_TOKEN,
 });
