@@ -1,13 +1,11 @@
 import { notFound } from "next/navigation";
 import { sanityFetch } from "@/sanity/lib/live";
+import { client } from "@/sanity/lib/client";
 import { PAGE_QUERY, PAGE_SLUGS_QUERY } from "@/sanity/lib/queries";
 import PageBuilder from "@/components/PageBuilder";
 
 export async function generateStaticParams() {
-	const { data: pages } = await sanityFetch({
-		query: PAGE_SLUGS_QUERY,
-	});
-
+	const pages = await client.fetch(PAGE_SLUGS_QUERY);
 	return (pages ?? []).map((page) => ({ slug: page.slug }));
 }
 
