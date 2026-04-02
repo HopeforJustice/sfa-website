@@ -77,7 +77,7 @@ export default function Hero({ data, documentId, documentType }) {
 							className="rounded-2xl overflow-hidden w-full h-[60vw] -mb-32 lg:-mr-80 lg:w-[800px] lg:h-[600px]"
 						>
 							<Image
-								src={urlFor(image).width(800).height(600).url()}
+								src={urlFor(image).width(800).height(600).fit("crop").url()}
 								alt={image.alt || ""}
 								width={800}
 								height={600}

@@ -15,7 +15,7 @@ export const PAGE_QUERY = groq`
           body,
           primaryButton,
           secondaryButton,
-          image { ..., asset-> }
+          image { ..., crop, hotspot, asset-> }
         },
         _type == "imageTilesWithTextBlock" => {
           heading,
