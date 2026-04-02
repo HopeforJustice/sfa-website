@@ -2,6 +2,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { SanityLive } from "../sanity/lib/live";
 
 export const metadata = {
 	title: "Slave-Free Alliance",
@@ -19,6 +20,7 @@ export default function RootLayout({ children }) {
 				<Header />
 				<div className="overflow-x-hidden">{children}</div>
 				<Footer />
+				<SanityLive />
 			</body>
 		</html>
 	);

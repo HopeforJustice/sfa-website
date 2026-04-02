@@ -1,8 +1,12 @@
 import Logo from "./Logo";
 import Nav from "./Nav";
 import Container from "./Container";
+import { sanityFetch } from "../sanity/lib/live";
+import { NAV_QUERY } from "../sanity/lib/queries";
 
-export default function Header() {
+export default async function Header() {
+	const { data: navData } = await sanityFetch({ query: NAV_QUERY });
+
 	return (
 		<>
 			<div className="py-5 lg:py-8 w-full text-white absolute top-0">
@@ -12,7 +16,7 @@ export default function Header() {
 							<Logo />
 						</div>
 
-						<Nav />
+						<Nav data={navData} />
 					</div>
 				</Container>
 			</div>

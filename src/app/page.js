@@ -1,19 +1,12 @@
-import MemberLogos from "../components/MemberLogos";
-import ImageTilesWithText from "../components/ImageTilesWithText";
-import Quote from "../components/Quote";
-import VideoWithText from "../components/VideoWithText";
-import ImageWithText from "../components/ImageWithText";
-import Hero from "../components/Hero";
+import { sanityFetch } from "@/sanity/lib/live";
+import { PAGE_QUERY } from "@/sanity/lib/queries";
+import PageBuilder from "@/components/PageBuilder";
 
-export default function Home() {
-	return (
-		<>
-			<Hero />
-			<ImageTilesWithText />
-			<VideoWithText />
-			<MemberLogos />
-			<Quote />
-			<ImageWithText />
-		</>
-	);
+export default async function Home() {
+	const { data: page } = await sanityFetch({
+		query: PAGE_QUERY,
+		params: { slug: "home" },
+	});
+
+	return <PageBuilder blocks={page?.pageBuilder} />;
 }

@@ -3,8 +3,13 @@ export const structure = (S) =>
 	S.list()
 		.title("Website content")
 		.items([
-			S.documentTypeListItem("page").title("Pages"),
-			S.documentTypeListItem("event").title("Events"),
-			S.documentTypeListItem("artist").title("Artists"),
-			S.documentTypeListItem("venue").title("Venues"),
+			S.listItem()
+				.title("Pages")
+				.child(
+					S.documentTypeList("page").title("Pages"),
+				),
+			S.divider(),
+			S.listItem()
+				.title("Navigation")
+				.child(S.document().schemaType("navigation").documentId("navigation")),
 		]);

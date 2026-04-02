@@ -9,216 +9,168 @@ import {
 	DisclosurePanel,
 } from "@headlessui/react";
 import FlyoutMenu from "./FlyoutMenu";
-import {
-	RectangleStackIcon,
-	UserGroupIcon,
-	ChatBubbleBottomCenterTextIcon,
-	ComputerDesktopIcon,
-	ArrowPathRoundedSquareIcon,
-	DocumentMagnifyingGlassIcon,
-	UsersIcon,
-	RocketLaunchIcon,
-	XMarkIcon,
-	Bars3Icon,
-} from "@heroicons/react/24/outline";
+import { XMarkIcon, Bars3Icon } from "@heroicons/react/24/outline";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
-
-const products = [
-	{
-		name: "Analytics",
-		description: "Get a better understanding of your traffic",
-		href: "#",
-	},
-	{
-		name: "Engagement",
-		description: "Speak directly to your customers",
-		href: "#",
-	},
-	{
-		name: "Security",
-		description: "Your customers’ data will be safe and secure",
-		href: "#",
-	},
-	{
-		name: "Integrations",
-		description: "Connect with third-party tools",
-		href: "#",
-	},
-	{
-		name: "Automations",
-		description: "Build strategic funnels that will convert",
-		href: "#",
-	},
-];
-const callsToAction = [
-	{ name: "Watch demo", href: "#" },
-	{ name: "Contact sales", href: "#" },
-];
 
 const nav = {
 	items: [
-		{
-			title: "About us",
-			type: "link",
-		},
-		{
-			title: "Why partner with us",
-			type: "link",
-		},
+		{ title: "About us", type: "navLink", href: "#" },
+		{ title: "Why partner with us", type: "navLink", href: "#" },
 		{
 			title: "Services",
-			type: "twoColumn",
-			colOne: {
-				title: "Our Services",
-				items: [
-					{
-						name: "Our Full Range of Services",
-						description: "Specialist services delivered by unrivalled experts",
-						href: "#",
-						icon: RectangleStackIcon,
-					},
-					{
-						name: "Membership",
-						description: "Protect your organisation, supply chain and people",
-						href: "#",
-						icon: UserGroupIcon,
-					},
-					{
-						name: "Consultancy",
-						description:
-							"Identify good practice and areas for improvement across your operations",
-						href: "#",
-						icon: ChatBubbleBottomCenterTextIcon,
-					},
-					{
-						name: "Technology Solutions",
-						description: "Future proof your response to modern slavery",
-						href: "#",
-						icon: ComputerDesktopIcon,
-					},
-					// {
-					// 	name: "SC3 – Supply Chain Continuous Compliance",
-					// 	description:
-					// 		"Integrated services for effective and efficient modern slavery risk management",
-					// 	href: "#",
-					// 	icon: ArrowPathRoundedSquareIcon,
-					// },
-				],
-			},
-			colTwo: {
-				title: "Modern Slavery Training",
-				items: [
-					{
-						name: "What is Modern Slavery?",
-						description:
-							"What modern slavery might look like in your industry and the steps to mitigate the risk",
-						href: "#",
-					},
-					{
-						name: "Taking Action Against Modern Slavery",
-						description:
-							"Delve deeper into the subject and required actions to tackle modern slavery",
-						href: "#",
-					},
-					{
-						name: "Modern Slavery Awareness for Executives",
-						description:
-							"Learn about managing modern slavery risks and issues in operations and supply chains",
-						href: "#",
-					},
-					{
-						name: "Responding to Modern Slavery",
-						description:
-							"Respond effectively to a suspected case of modern slavery",
-						href: "#",
-					},
-				],
-			},
+			type: "navFlyout",
+			columns: [
+				{
+					title: "Our Services",
+					items: [
+						{
+							name: "Our Full Range of Services",
+							description:
+								"Specialist services delivered by unrivalled experts",
+							href: "#",
+							icon: "RectangleStackIcon",
+						},
+						{
+							name: "Membership",
+							description: "Protect your organisation, supply chain and people",
+							href: "#",
+							icon: "UserGroupIcon",
+						},
+						{
+							name: "Consultancy",
+							description:
+								"Identify good practice and areas for improvement across your operations",
+							href: "#",
+							icon: "ChatBubbleBottomCenterTextIcon",
+						},
+						{
+							name: "Technology Solutions",
+							description: "Future proof your response to modern slavery",
+							href: "#",
+							icon: "ComputerDesktopIcon",
+						},
+					],
+				},
+				{
+					title: "Modern Slavery Training",
+					items: [
+						{
+							name: "What is Modern Slavery?",
+							description:
+								"What modern slavery might look like in your industry and the steps to mitigate the risk",
+							href: "#",
+						},
+						{
+							name: "Taking Action Against Modern Slavery",
+							description:
+								"Delve deeper into the subject and required actions to tackle modern slavery",
+							href: "#",
+						},
+						{
+							name: "Modern Slavery Awareness for Executives",
+							description:
+								"Learn about managing modern slavery risks and issues in operations and supply chains",
+							href: "#",
+						},
+						{
+							name: "Responding to Modern Slavery",
+							description:
+								"Respond effectively to a suspected case of modern slavery",
+							href: "#",
+						},
+					],
+				},
+			],
 		},
 		{
 			title: "Success Stories",
-			type: "flyOut",
-			items: [
+			type: "navFlyout",
+			columns: [
 				{
-					name: "Case Studies & Testimonials",
-					description: "Specialist services delivered by unrivalled experts",
-					href: "#",
-					icon: DocumentMagnifyingGlassIcon,
-				},
-				{
-					name: "Collaborative Groups",
-					description:
-						"Industry groups to improve sector-wide resilience to modern slavery.",
-					href: "#",
-					icon: UsersIcon,
-				},
-				{
-					name: "Strategic Partnerships",
-					description:
-						"Strategic alliances with prominent companies dedicated to promoting ethical supply chains",
-					href: "#",
-					icon: RocketLaunchIcon,
+					items: [
+						{
+							name: "Case Studies & Testimonials",
+							description:
+								"Specialist services delivered by unrivalled experts",
+							href: "#",
+							icon: "DocumentMagnifyingGlassIcon",
+						},
+						{
+							name: "Collaborative Groups",
+							description:
+								"Industry groups to improve sector-wide resilience to modern slavery.",
+							href: "#",
+							icon: "UsersIcon",
+						},
+						{
+							name: "Strategic Partnerships",
+							description:
+								"Strategic alliances with prominent companies dedicated to promoting ethical supply chains",
+							href: "#",
+							icon: "RocketLaunchIcon",
+						},
+					],
 				},
 			],
 		},
 		{
 			title: "Resources",
-			type: "flyOut",
-			items: [
+			type: "navFlyout",
+			columns: [
 				{
-					name: "News Stories",
-					description:
-						"Stay up to date with the latest research, insights, and stories of increasing resilience against modern slavery",
-					href: "#",
-					// icon: UsersIcon,
-				},
-				{
-					name: "Anti-Slavery Day",
-					description: "Raise awareness of the issue in your organisation",
-					href: "#",
-					// icon: UsersIcon,
-				},
-				{
-					name: "Events",
-					description: "Upcoming Slave-Free Alliance events",
-					href: "#",
-					// icon: RocketLaunchIcon,
+					items: [
+						{
+							name: "News Stories",
+							description:
+								"Stay up to date with the latest research, insights, and stories of increasing resilience against modern slavery",
+							href: "#",
+						},
+						{
+							name: "Anti-Slavery Day",
+							description: "Raise awareness of the issue in your organisation",
+							href: "#",
+						},
+						{
+							name: "Events",
+							description: "Upcoming Slave-Free Alliance events",
+							href: "#",
+						},
+					],
 				},
 			],
 		},
-		{
-			title: "Contact",
-			type: "link",
-		},
-		{
-			title: "Members Area",
-			type: "button",
-		},
+		{ title: "Contact", type: "navLink", href: "#" },
+		{ title: "Members Area", type: "navButton", href: "#" },
 	],
 };
 
-export default function Nav() {
+export default function Nav({ data }) {
+	const navItems = data?.items ?? nav.items;
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 	return (
 		<>
 			<nav className="gap-8 items-center hidden xl:flex">
-				{nav.items.map((item, i) =>
-					item.type === "flyOut" || item.type === "twoColumn" ? (
-						<FlyoutMenu key={i} item={item} />
-					) : item.type === "button" ? (
-						<button className="px-4 py-2 bg-white text-sfa-blue text-sm font-bold rounded-md">
-							{item.title}
-						</button>
-					) : (
-						<a
-							href={item.href}
-							key={i}
-							className="font-bold hover:opacity-80 cursor-pointer"
-						>
-							{item.title}
-						</a>
-					)
-				)}
+				{navItems &&
+					navItems.map((item, i) =>
+						item.type === "navFlyout" ? (
+							<FlyoutMenu key={i} item={item} />
+						) : item.type === "navButton" ? (
+							<button
+								key={i}
+								className="px-4 py-2 bg-white text-sfa-blue text-sm font-bold rounded-md"
+							>
+								{item.title}
+							</button>
+						) : (
+							<a
+								key={i}
+								href={item.href}
+								className="font-bold hover:opacity-80 cursor-pointer"
+							>
+								{item.title}
+							</a>
+						),
+					)}
 			</nav>
 			{/* mobile menu button */}
 			<div className="block xl:hidden">
@@ -254,93 +206,47 @@ export default function Nav() {
 					<div className="mt-6 flow-root">
 						<div className="-my-6 divide-y divide-gray-500/10">
 							<div className="space-y-2 py-6">
-								{nav.items.map((item) =>
-									item.type === "link" ? (
-										<Disclosure key={item.title} as="div" className="-mx-3">
-											<DisclosureButton className="group flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">
-												{item.title}
-											</DisclosureButton>
-										</Disclosure>
-									) : item.type === "twoColumn" ? (
-										<>
-											{/* col 1 */}
+								{navItems &&
+									navItems.map((item) =>
+										item.type === "navLink" ? (
 											<Disclosure key={item.title} as="div" className="-mx-3">
 												<DisclosureButton className="group flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">
-													{item.colOne.title}
-													<ChevronDownIcon
-														aria-hidden="true"
-														className="size-5 flex-none group-data-[open]:rotate-180"
-													/>
+													{item.title}
 												</DisclosureButton>
-												<DisclosurePanel className="mt-2 space-y-2">
-													{item.colOne.items.map((item) => (
-														<DisclosureButton
-															key={item.name}
-															as="a"
-															href=""
-															className="block rounded-lg py-2 pl-6 pr-3 text-sm/7 font-semibold text-gray-900 hover:bg-gray-50"
-														>
-															{item.name}
-															<p className="text-sm text-sfa-blue-500 font-normal">
-																{item.description}
-															</p>
-														</DisclosureButton>
-													))}
-												</DisclosurePanel>
 											</Disclosure>
-											{/* col 2 */}
-											<Disclosure key={item.title} as="div" className="-mx-3">
-												<DisclosureButton className="group flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">
-													{item.colTwo.title}
-													<ChevronDownIcon
-														aria-hidden="true"
-														className="size-5 flex-none group-data-[open]:rotate-180"
-													/>
-												</DisclosureButton>
-												<DisclosurePanel className="mt-2 space-y-2">
-													{item.colTwo.items.map((item) => (
-														<DisclosureButton
-															key={item.name}
-															as="a"
-															href=""
-															className="block rounded-lg py-2 pl-6 pr-3 text-sm/7 font-semibold text-gray-900 hover:bg-gray-50"
-														>
-															{item.name}
-															<p className="text-sm text-sfa-blue-500 font-normal">
-																{item.description}
-															</p>
-														</DisclosureButton>
-													))}
-												</DisclosurePanel>
-											</Disclosure>
-										</>
-									) : item.type === "flyOut" ? (
-										<Disclosure key={item.title} as="div" className="-mx-3">
-											<DisclosureButton className="group flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">
-												{item.title}
-												<ChevronDownIcon
-													aria-hidden="true"
-													className="size-5 flex-none group-data-[open]:rotate-180"
-												/>
-											</DisclosureButton>
-											<DisclosurePanel className="mt-2 space-y-2">
-												{item.items.map((item) => (
-													<DisclosureButton
-														key={item.name}
-														as="a"
-														href=""
-														className="block rounded-lg py-2 pl-6 pr-3 text-sm/7 font-semibold text-gray-900 hover:bg-gray-50"
-													>
-														{item.name}
-														<p className="text-sm text-sfa-blue-500 font-normal">
-															{item.description}
-														</p>
+										) : item.type === "navFlyout" ? (
+											item.columns.map((col, ci) => (
+												<Disclosure
+													key={`${item.title}-${ci}`}
+													as="div"
+													className="-mx-3"
+												>
+													<DisclosureButton className="group flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">
+														{col.title || item.title}
+														<ChevronDownIcon
+															aria-hidden="true"
+															className="size-5 flex-none group-data-[open]:rotate-180"
+														/>
 													</DisclosureButton>
-												))}
-											</DisclosurePanel>
-										</Disclosure>
-									) : null
-								)}
+													<DisclosurePanel className="mt-2 space-y-2">
+														{col.items?.map((menuItem) => (
+															<DisclosureButton
+																key={menuItem.name}
+																as="a"
+																href={menuItem.href}
+																className="block rounded-lg py-2 pl-6 pr-3 text-sm/7 font-semibold text-gray-900 hover:bg-gray-50"
+															>
+																{menuItem.name}
+																<p className="text-sm text-sfa-blue font-normal">
+																	{menuItem.description}
+																</p>
+															</DisclosureButton>
+														))}
+													</DisclosurePanel>
+												</Disclosure>
+											))
+										) : null,
+									)}
 							</div>
 						</div>
 					</div>

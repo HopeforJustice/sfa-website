@@ -1,17 +1,21 @@
-import { artistType } from "./artitstType";
-import { venueType } from "./venueType";
-import { eventType } from "./eventType";
-import { blockContentType } from "./blockContentType";
-import { customBlock } from "./blocks/customBlock";
+import { navigationType } from "./navigationType";
 import { pageType } from "./pageType";
+import { heroBlock } from "./blocks/heroBlock";
+import { imageTilesWithTextBlock } from "./blocks/imageTilesWithTextBlock";
+import { videoWithTextBlock } from "./blocks/videoWithTextBlock";
+import { memberLogosBlock } from "./blocks/memberLogosBlock";
+import { quoteBlock } from "./blocks/quoteBlock";
+import { imageWithTextBlock } from "./blocks/imageWithTextBlock";
 
 export const schema = {
 	types: [
-		eventType,
-		artistType,
-		venueType,
-		blockContentType,
-		customBlock,
+		navigationType,
 		pageType,
+		heroBlock,
+		imageTilesWithTextBlock,
+		videoWithTextBlock,
+		memberLogosBlock,
+		quoteBlock,
+		imageWithTextBlock,
 	],
 };
