@@ -24,6 +24,7 @@ export const PAGE_QUERY = groq`
           subheadingBody,
           button,
           images[] { ..., asset-> },
+          statsTitle,
           stats
         },
         _type == "videoWithTextBlock" => {

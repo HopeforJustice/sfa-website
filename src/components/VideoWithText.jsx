@@ -8,7 +8,7 @@ export default function VideoWithText({ data }) {
 		data;
 
 	return (
-		<section className="mb-10 lg:mb-20">
+		<section className="mb-10 lg:mb-20 bg-white">
 			<Container>
 				<div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
 					{vimeoUrl && (

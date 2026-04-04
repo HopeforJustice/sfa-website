@@ -1,6 +1,7 @@
 import Container from "./Container";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
+import placeholderImage from "@/app/img/placeholder.svg";
 
 export default function MemberLogos({ data }) {
 	if (!data) return null;

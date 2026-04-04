@@ -3,6 +3,8 @@ import Button from "./Button";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 import { createDataAttribute } from "@sanity/visual-editing/create-data-attribute";
+import placeholderImage from "@/app/img/placeholder.svg";
+import NetworkCanvas from "./NetworkCanvas";
 
 export default function Hero({ data, documentId, documentType }) {
 	if (!data) return null;
@@ -22,9 +24,12 @@ export default function Hero({ data, documentId, documentType }) {
 			: {};
 
 	return (
-		<div className="bg-sfa-blue w-full pt-32 lg:pt-40 pb-20">
+		<div className="relative bg-sfa-blue w-full pt-32 lg:pt-40 pb-20">
+			<div className="hidden md:block">
+				<NetworkCanvas />
+			</div>
 			<Container>
-				<div className="grid lg:grid-cols-2 gap-16 items-center">
+				<div className="relative z-10 grid lg:grid-cols-2 gap-16 items-center">
 					<div className="max-w-2xl">
 						{eyebrow && (
 							<div
@@ -71,20 +76,20 @@ export default function Hero({ data, documentId, documentType }) {
 							)}
 						</div>
 					</div>
-					{image?.asset && (
-						<div
+					<div className="rounded-2xl overflow-hidden w-full h-[60vw] -mb-32 lg:-mr-80 lg:w-[800px] lg:h-[600px]">
+						<Image
 							{...attr("image")}
-							className="rounded-2xl overflow-hidden w-full h-[60vw] -mb-32 lg:-mr-80 lg:w-[800px] lg:h-[600px]"
-						>
-							<Image
-								src={urlFor(image).width(800).height(600).fit("crop").url()}
-								alt={image.alt || ""}
-								width={800}
-								height={600}
-								className="relative w-full h-full object-cover"
-							/>
-						</div>
-					)}
+							src={
+								image?.asset
+									? urlFor(image).width(800).height(600).fit("crop").url()
+									: placeholderImage
+							}
+							alt={image?.alt || ""}
+							width={800}
+							height={600}
+							className="relative w-full h-full object-cover z-10"
+						/>
+					</div>
 				</div>
 			</Container>
 		</div>

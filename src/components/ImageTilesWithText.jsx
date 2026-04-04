@@ -2,6 +2,7 @@ import Container from "./Container";
 import Image from "next/image";
 import Button from "./Button";
 import { urlFor } from "@/sanity/lib/image";
+import placeholderImage from "@/app/img/placeholder.svg";
 
 // Tile offset classes alternate for the mosaic effect
 const tileOffsets = ["", "-mt-8 lg:-mt-40", "", "-mt-8 lg:-mt-40"];
@@ -9,8 +10,16 @@ const tileOffsets = ["", "-mt-8 lg:-mt-40", "", "-mt-8 lg:-mt-40"];
 export default function ImageTilesWithText({ data }) {
 	if (!data) return null;
 
-	const { heading, body, subheading, subheadingBody, button, images, stats } =
-		data;
+	const {
+		heading,
+		body,
+		subheading,
+		subheadingBody,
+		button,
+		images,
+		stats,
+		statsTitle,
+	} = data;
 
 	return (
 		<div className="overflow-hidden bg-white py-24 sm:py-32">
@@ -57,7 +66,11 @@ export default function ImageTilesWithText({ data }) {
 									>
 										<Image
 											alt={img.alt || ""}
-											src={urlFor(img).width(400).height(400).url()}
+											src={
+												img?.asset
+													? urlFor(img).width(400).height(400).url()
+													: placeholderImage
+											}
 											width={400}
 											height={400}
 											className="block size-full object-cover"
@@ -69,9 +82,9 @@ export default function ImageTilesWithText({ data }) {
 					)}
 					{stats?.length > 0 && (
 						<div className="max-lg:mt-16 lg:col-span-1">
-							<p className="text-xl font-bold text-sfa-blue">
-								Modern slavery statistics
-							</p>
+							{statsTitle && (
+								<p className="text-xl font-bold text-sfa-blue">{statsTitle}</p>
+							)}
 							<hr className="mt-6 border-t border-gray-200" />
 							<dl className="mt-6 grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2">
 								{stats.map((stat, i) => (

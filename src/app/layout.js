@@ -19,9 +19,9 @@ export default async function RootLayout({ children }) {
 				<link rel="stylesheet" href="https://use.typekit.net/dlv0xph.css" />
 				<script async src="https://player.vimeo.com/api/player.js"></script>
 			</head>
-			<body className={`antialiased overflow-x-hidden w-[100vw]`}>
+			<body className={`antialiased overflow-x-hidden bg-white`}>
 				<Header />
-				<div className="overflow-x-hidden">{children}</div>
+				<div className="">{children}</div>
 				<Footer />
 				<SanityLive />
 				{isDraftMode && <VisualEditing />}

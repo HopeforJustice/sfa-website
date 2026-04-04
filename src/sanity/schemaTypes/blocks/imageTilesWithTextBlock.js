@@ -52,6 +52,11 @@ export const imageTilesWithTextBlock = defineType({
 			],
 		}),
 		defineField({
+			name: "statsTitle",
+			title: "Statistics Title",
+			type: "string",
+		}),
+		defineField({
 			name: "stats",
 			title: "Statistics",
 			type: "array",

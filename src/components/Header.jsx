@@ -9,7 +9,7 @@ export default async function Header() {
 
 	return (
 		<>
-			<div className="py-5 lg:py-8 w-full text-white absolute top-0">
+			<div className="py-5 lg:py-8 w-full text-white absolute top-0 z-10">
 				<Container>
 					<div className="flex justify-between">
 						<div className="inline-block w-56 pr-4">

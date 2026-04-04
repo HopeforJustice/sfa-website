@@ -2,6 +2,7 @@ import Image from "next/image";
 import Container from "./Container";
 import Button from "./Button";
 import { urlFor } from "@/sanity/lib/image";
+import placeholderImage from "@/app/img/placeholder.svg";
 
 export default function ImageWithText({ data }) {
 	if (!data) return null;
@@ -32,19 +33,21 @@ export default function ImageWithText({ data }) {
 							)}
 						</div>
 					</div>
-					{image?.asset && (
-						<div className="sm:px-6 lg:px-0">
-							<div className="rounded-xl overflow-hidden mx-auto max-w-2xl sm:mx-0 sm:w-full">
-								<Image
-									alt={image.alt || ""}
-									src={urlFor(image).width(800).url()}
-									width={800}
-									height={600}
-									className="-mb-12 w-full max-w-none bg-gray-800 ring-1 ring-white/10"
-								/>
-							</div>
+					<div className="sm:px-6 lg:px-0">
+						<div className="rounded-xl overflow-hidden mx-auto max-w-2xl sm:mx-0 sm:w-full">
+							<Image
+								alt={image?.alt || ""}
+								src={
+									image?.asset
+										? urlFor(image).width(800).url()
+										: placeholderImage
+								}
+								width={800}
+								height={600}
+								className="-mb-12 w-full max-w-none bg-gray-800 ring-1 ring-white/10"
+							/>
 						</div>
-					)}
+					</div>
 				</div>
 			</Container>
 		</div>
