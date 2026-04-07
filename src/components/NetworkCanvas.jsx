@@ -253,8 +253,12 @@ export default function NetworkCanvas() {
 
 			// Vignette overlay
 			const vignette = ctx.createRadialGradient(
-				canvas.width / 2, canvas.height / 2, canvas.height * 0.25,
-				canvas.width / 2, canvas.height / 2, canvas.width * 0.85,
+				canvas.width / 2,
+				canvas.height / 2,
+				canvas.height * 0.25,
+				canvas.width / 2,
+				canvas.height / 2,
+				canvas.width * 0.85,
 			);
 			vignette.addColorStop(0, "rgba(0,0,0,0)");
 			vignette.addColorStop(1, "rgba(0,0,0,0.65)");

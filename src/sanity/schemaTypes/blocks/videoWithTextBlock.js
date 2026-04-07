@@ -46,7 +46,10 @@ export const videoWithTextBlock = defineType({
 	preview: {
 		select: { title: "heading" },
 		prepare({ title }) {
-			return { title: title || "Video With Text Block" };
+			return {
+				title: title || "Video With Text Block",
+				subtitle: "Block: Video With Text",
+			};
 		},
 	},
 });

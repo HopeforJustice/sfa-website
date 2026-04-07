@@ -37,9 +37,12 @@ export const quoteBlock = defineType({
 		}),
 	],
 	preview: {
-		select: { title: "personName", subtitle: "personRole" },
-		prepare({ title, subtitle }) {
-			return { title: title || "Quote Block", subtitle };
+		select: { title: "personName" },
+		prepare({ title }) {
+			return {
+				title: title || "Quote Block",
+				subtitle: "Block: Quote / Testimonial",
+			};
 		},
 	},
 });

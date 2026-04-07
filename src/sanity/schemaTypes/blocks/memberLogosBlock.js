@@ -36,7 +36,10 @@ export const memberLogosBlock = defineType({
 	preview: {
 		select: { title: "heading" },
 		prepare({ title }) {
-			return { title: title || "Member Logos Block" };
+			return {
+				title: title || "Member Logos Block",
+				subtitle: "Block: Member Logos",
+			};
 		},
 	},
 });

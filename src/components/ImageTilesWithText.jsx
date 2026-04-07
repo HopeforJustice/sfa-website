@@ -64,15 +64,13 @@ export default function ImageTilesWithText({ data }) {
 										key={img._key || i}
 										className={`aspect-square overflow-hidden rounded-xl shadow-xl outline-1 -outline-offset-1 outline-black/10 ${tileOffsets[i] || ""}`}
 									>
-										<Image
+										<img
 											alt={img.alt || ""}
 											src={
 												img?.asset
 													? urlFor(img).width(400).height(400).url()
 													: placeholderImage
 											}
-											width={400}
-											height={400}
 											className="block size-full object-cover"
 										/>
 									</div>

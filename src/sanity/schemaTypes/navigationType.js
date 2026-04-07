@@ -82,6 +82,44 @@ const column = defineArrayMember({
 	},
 });
 
+const footerLink = defineArrayMember({
+	type: "object",
+	title: "Link",
+	fields: [
+		defineField({ name: "name", title: "Name", type: "string" }),
+		defineField({ name: "href", title: "URL", type: "string" }),
+	],
+	preview: {
+		select: { title: "name" },
+		prepare({ title }) {
+			return { title: title || "Untitled Link" };
+		},
+	},
+});
+
+const footerColumn = defineArrayMember({
+	type: "object",
+	title: "Footer Column",
+	fields: [
+		defineField({ name: "title", title: "Column Title", type: "string" }),
+		defineField({
+			name: "items",
+			title: "Links",
+			type: "array",
+			of: [footerLink],
+		}),
+	],
+	preview: {
+		select: { title: "title", items: "items" },
+		prepare({ title, items }) {
+			return {
+				title: title || "Untitled Column",
+				subtitle: `${items?.length ?? 0} link${(items?.length ?? 0) === 1 ? "" : "s"}`,
+			};
+		},
+	},
+});
+
 export const navigationType = defineType({
 	name: "navigation",
 	title: "Navigation",
@@ -92,11 +130,16 @@ export const navigationType = defineType({
 			return { title: "Navigation" };
 		},
 	},
+	groups: [
+		{ name: "header", title: "Header Navigation", default: true },
+		{ name: "footer", title: "Footer Navigation" },
+	],
 	fields: [
 		defineField({
 			name: "items",
 			title: "Nav Items",
 			type: "array",
+			group: "header",
 			of: [
 				// Simple link
 				defineArrayMember({
@@ -157,6 +200,13 @@ export const navigationType = defineType({
 					},
 				}),
 			],
+		}),
+		defineField({
+			name: "footerColumns",
+			title: "Footer Columns",
+			type: "array",
+			group: "footer",
+			of: [footerColumn],
 		}),
 	],
 });

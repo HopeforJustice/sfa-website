@@ -14,12 +14,6 @@ import { apiVersion, dataset, projectId } from "./src/sanity/env";
 import { schema } from "./src/sanity/schemaTypes";
 import { structure } from "./src/sanity/structure";
 
-const NEXT_PUBLIC_URL =
-	process.env.NEXT_PUBLIC_NEXTJS_URL ||
-	(process.env.NEXT_PUBLIC_VERCEL_URL
-		? `${process.env.NEXT_PUBLIC_VERCEL_URL}`
-		: "http://localhost:3000");
-
 export default defineConfig({
 	projectId,
 	dataset,
@@ -28,10 +22,10 @@ export default defineConfig({
 	plugins: [
 		structureTool({ structure }),
 		presentationTool({
-			allowOrigins: [NEXT_PUBLIC_URL],
+			allowOrigins: [process.env.SANITY_STUDIO_PREVIEW_URL],
 			previewUrl: {
 				draftMode: {
-					enable: `${NEXT_PUBLIC_URL}/api/draft-mode/enable`,
+					enable: `${process.env.SANITY_STUDIO_PREVIEW_URL}/api/draft-mode/enable`,
 				},
 			},
 		}),

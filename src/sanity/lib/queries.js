@@ -84,3 +84,15 @@ export const NAV_QUERY = groq`
     }
   }
 `;
+
+export const FOOTER_QUERY = groq`
+  *[_type == "navigation"][0] {
+    footerColumns[] {
+      title,
+      items[] {
+        name,
+        href
+      }
+    }
+  }
+`;

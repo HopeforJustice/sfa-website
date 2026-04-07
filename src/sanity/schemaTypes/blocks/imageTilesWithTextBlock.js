@@ -82,7 +82,10 @@ export const imageTilesWithTextBlock = defineType({
 	preview: {
 		select: { title: "heading" },
 		prepare({ title }) {
-			return { title: title || "Image Tiles With Text Block" };
+			return {
+				title: title || "Image Tiles With Text Block",
+				subtitle: "Block: Image Tiles With Text",
+			};
 		},
 	},
 });

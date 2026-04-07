@@ -35,16 +35,14 @@ export default function ImageWithText({ data }) {
 					</div>
 					<div className="sm:px-6 lg:px-0">
 						<div className="rounded-xl overflow-hidden mx-auto max-w-2xl sm:mx-0 sm:w-full">
-							<Image
+							<img
 								alt={image?.alt || ""}
 								src={
 									image?.asset
 										? urlFor(image).width(800).url()
 										: placeholderImage
 								}
-								width={800}
-								height={600}
-								className="-mb-12 w-full max-w-none bg-gray-800 ring-1 ring-white/10"
+								className="w-full max-w-none bg-gray-800 ring-1 ring-white/10"
 							/>
 						</div>
 					</div>

@@ -10,18 +10,16 @@ export default function Quote({ data }) {
 		<section className="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:px-8">
 			<div className="mx-auto max-w-2xl lg:max-w-4xl">
 				{companyLogo?.asset && (
-					<Image
+					<img
 						alt={companyLogo.alt || ""}
 						src={urlFor(companyLogo).height(48).url()}
-						width={158}
-						height={48}
 						className="mx-auto h-12 w-auto"
 					/>
 				)}
 				{quote && (
 					<figure className="mt-10">
 						<blockquote className="text-center text-xl/8 font-semibold text-sfa-blue sm:text-2xl/9">
-							<p>&quot;{quote}&quot;</p>
+							<p>{quote}</p>
 						</blockquote>
 						<figcaption className="mt-10">
 							{personImage?.asset && (

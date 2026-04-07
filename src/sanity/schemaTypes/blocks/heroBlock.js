@@ -46,7 +46,7 @@ export const heroBlock = defineType({
 	preview: {
 		select: { title: "heading" },
 		prepare({ title }) {
-			return { title: title || "Hero Block" };
+			return { title: title || "Hero Block", subtitle: "Block: Hero" };
 		},
 	},
 });

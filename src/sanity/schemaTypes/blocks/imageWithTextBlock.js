@@ -42,7 +42,10 @@ export const imageWithTextBlock = defineType({
 	preview: {
 		select: { title: "heading" },
 		prepare({ title }) {
-			return { title: title || "Image With Text Block" };
+			return {
+				title: title || "Image With Text Block",
+				subtitle: "Block: Image With Text",
+			};
 		},
 	},
 });

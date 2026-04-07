@@ -42,7 +42,7 @@ export default function Hero({ data, documentId, documentType }) {
 						{heading && (
 							<h1
 								{...attr("heading")}
-								className="text-5xl sm:text-5xl md:text-6xl font-display font-normal text-white mb-8 leading-tight text-balance"
+								className="text-4xl sm:text-4xl md:text-5xl font-display font-normal text-white mb-8 leading-tight"
 							>
 								{heading}
 							</h1>
@@ -77,7 +77,7 @@ export default function Hero({ data, documentId, documentType }) {
 						</div>
 					</div>
 					<div className="rounded-2xl overflow-hidden w-full h-[60vw] -mb-32 lg:-mr-80 lg:w-[800px] lg:h-[600px]">
-						<Image
+						<img
 							{...attr("image")}
 							src={
 								image?.asset
@@ -85,8 +85,6 @@ export default function Hero({ data, documentId, documentType }) {
 									: placeholderImage
 							}
 							alt={image?.alt || ""}
-							width={800}
-							height={600}
 							className="relative w-full h-full object-cover z-10"
 						/>
 					</div>

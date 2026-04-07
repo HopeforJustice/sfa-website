@@ -25,11 +25,9 @@ export default function MemberLogos({ data }) {
 							className="bg-sfa-blue-100 p-8 sm:p-10 flex items-center"
 						>
 							{member.logo?.asset && (
-								<Image
+								<img
 									alt={member.name || ""}
 									src={urlFor(member.logo).width(316).height(112).url()}
-									width={158}
-									height={56}
 									className="max-h-14 w-full object-contain"
 								/>
 							)}
