@@ -208,5 +208,12 @@ export const navigationType = defineType({
 			group: "footer",
 			of: [footerColumn],
 		}),
+		defineField({
+			name: "footerSmallPrint",
+			title: "Small Print",
+			type: "text",
+			group: "footer",
+			rows: 4,
+		}),
 	],
 });

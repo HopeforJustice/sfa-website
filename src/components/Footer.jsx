@@ -30,6 +30,7 @@ const social = [
 export default async function Footer() {
 	const { data } = await sanityFetch({ query: FOOTER_QUERY });
 	const footerColumns = data?.footerColumns ?? [];
+	const footerSmallPrint = data?.footerSmallPrint;
 
 	return (
 		<footer className="bg-sfa-blue">
@@ -82,19 +83,12 @@ export default async function Footer() {
 					</div>
 				</div>
 				<div className="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24">
-					<p className="text-sm/6 text-gray-400">
-						Slave-Free Alliance Ltd is a registered company (no. 11258651) and
-						is a part of{" "}
-						<a href="https://hopeforjustice.org" className="underline">
-							Hope for Justice
-						</a>
-						, which is a charity registered in England and Wales (no. 1126097)
-						and in Scotland (no. SC045769). Slave-Free Alliance (Australia) Ltd
-						is a registered ACNC and is part of Hope for Justice (Australia) Ltd
-						which is a charity registered in Australia. Slave-Free Alliance
-						acknowledges the Traditional Owners of Country throughout Australia.
-						We pay our respects to Elders past, present and emerging.
-					</p>
+					{footerSmallPrint && (
+						<p
+							dangerouslySetInnerHTML={{ __html: footerSmallPrint }}
+							className="text-sm/6 text-gray-400 [&>a]:underline"
+						></p>
+					)}
 				</div>
 			</div>
 		</footer>

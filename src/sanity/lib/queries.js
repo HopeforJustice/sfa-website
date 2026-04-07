@@ -93,6 +93,7 @@ export const FOOTER_QUERY = groq`
         name,
         href
       }
-    }
+    },
+    footerSmallPrint
   }
 `;
