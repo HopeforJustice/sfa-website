@@ -3,6 +3,7 @@ import { sanityFetch } from "@/sanity/lib/live";
 import { client } from "@/sanity/lib/client";
 import { PAGE_QUERY, PAGE_SLUGS_QUERY } from "@/sanity/lib/queries";
 import PageBuilder from "@/components/PageBuilder";
+import { getLocale } from "@/lib/locale";
 
 export async function generateStaticParams() {
 	const pages = await client.fetch(PAGE_SLUGS_QUERY);
@@ -11,9 +12,10 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }) {
 	const { slug } = await params;
+	const locale = await getLocale();
 	const { data: page } = await sanityFetch({
 		query: PAGE_QUERY,
-		params: { slug },
+		params: { slug, locale, baseLocale: "en" },
 	});
 
 	if (!page) return {};
@@ -29,9 +31,10 @@ export default async function Page({ params }) {
 	// "home" is reserved for the root / route
 	if (slug === "home") notFound();
 
+	const locale = await getLocale();
 	const { data: page } = await sanityFetch({
 		query: PAGE_QUERY,
-		params: { slug },
+		params: { slug, locale, baseLocale: "en" },
 	});
 
 	if (!page) notFound();

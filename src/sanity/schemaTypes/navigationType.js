@@ -3,6 +3,7 @@ import { defineArrayMember, defineField, defineType } from "sanity";
 import { IconPicker } from "../components/IconPicker";
 import * as OutlineIcons from "@heroicons/react/24/outline";
 import * as SolidIcons from "@heroicons/react/24/solid";
+import { linkFields } from "./linkFields";
 
 function resolveIcon(iconValue) {
 	if (!iconValue) return null;
@@ -20,7 +21,7 @@ const menuItem = defineArrayMember({
 	fields: [
 		defineField({ name: "name", title: "Name", type: "string" }),
 		defineField({ name: "description", title: "Description", type: "string" }),
-		defineField({ name: "href", title: "URL", type: "string" }),
+		...linkFields,
 		defineField({
 			name: "icon",
 			title: "Icon",
@@ -87,7 +88,7 @@ const footerLink = defineArrayMember({
 	title: "Link",
 	fields: [
 		defineField({ name: "name", title: "Name", type: "string" }),
-		defineField({ name: "href", title: "URL", type: "string" }),
+		...linkFields,
 	],
 	preview: {
 		select: { title: "name" },
@@ -148,7 +149,7 @@ export const navigationType = defineType({
 					title: "Link",
 					fields: [
 						defineField({ name: "title", title: "Title", type: "string" }),
-						defineField({ name: "href", title: "URL", type: "string" }),
+						...linkFields,
 					],
 					preview: {
 						select: { title: "title" },
@@ -164,7 +165,7 @@ export const navigationType = defineType({
 					title: "Button",
 					fields: [
 						defineField({ name: "title", title: "Title", type: "string" }),
-						defineField({ name: "href", title: "URL", type: "string" }),
+						...linkFields,
 					],
 					preview: {
 						select: { title: "title" },

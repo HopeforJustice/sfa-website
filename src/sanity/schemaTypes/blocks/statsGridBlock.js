@@ -1,8 +1,8 @@
 import { defineField, defineType } from "sanity";
 
-export const memberLogosBlock = defineType({
-	name: "memberLogosBlock",
-	title: "Member Logos",
+export const statsGridBlock = defineType({
+	name: "statsGridBlock",
+	title: "Stats Grid",
 	type: "object",
 	fields: [
 		defineField({
@@ -11,9 +11,14 @@ export const memberLogosBlock = defineType({
 			type: "internationalizedArrayString",
 		}),
 		defineField({
-			name: "logos",
-			title: "Member Logos",
-			type: "internationalizedArrayLocalizableLogoList",
+			name: "body",
+			title: "Body",
+			type: "internationalizedArrayText",
+		}),
+		defineField({
+			name: "stats",
+			title: "Stats",
+			type: "internationalizedArrayLocalizableStatsGrid",
 		}),
 	],
 	preview: {
@@ -23,8 +28,8 @@ export const memberLogosBlock = defineType({
 				? (title.find((t) => t.language === "en")?.value ?? title[0]?.value)
 				: title;
 			return {
-				title: resolved || "Member Logos Block",
-				subtitle: "Block: Member Logos",
+				title: resolved || "Stats Grid Block",
+				subtitle: "Block: Stats Grid",
 			};
 		},
 	},

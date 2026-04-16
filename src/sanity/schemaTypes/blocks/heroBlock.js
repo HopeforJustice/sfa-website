@@ -1,4 +1,5 @@
 import { defineArrayMember, defineField, defineType } from "sanity";
+import { linkFields } from "../linkFields";
 
 const buttonField = (name, title) =>
 	defineField({
@@ -6,8 +7,12 @@ const buttonField = (name, title) =>
 		title,
 		type: "object",
 		fields: [
-			defineField({ name: "text", title: "Button Text", type: "string" }),
-			defineField({ name: "href", title: "URL", type: "string" }),
+			defineField({
+				name: "text",
+				title: "Button Text",
+				type: "internationalizedArrayString",
+			}),
+			...linkFields,
 		],
 	});
 
@@ -17,36 +22,64 @@ export const heroBlock = defineType({
 	type: "object",
 	fields: [
 		defineField({
+			name: "style",
+			title: "Hero Style",
+			type: "string",
+			initialValue: "default",
+			options: {
+				list: [
+					{
+						title: "Default (dark background, single image)",
+						value: "default",
+					},
+					{
+						title: "Image Columns (light background, image grid)",
+						value: "imageColumns",
+					},
+				],
+				layout: "radio",
+			},
+		}),
+		defineField({
 			name: "eyebrow",
 			title: "Eyebrow Text",
-			type: "string",
+			type: "internationalizedArrayString",
 			description: "Small text above the heading",
 		}),
 		defineField({
 			name: "heading",
 			title: "Heading",
-			type: "string",
+			type: "internationalizedArrayString",
 		}),
 		defineField({
 			name: "body",
 			title: "Body Text",
-			type: "text",
-			rows: 4,
+			type: "internationalizedArrayText",
 		}),
 		buttonField("primaryButton", "Primary Button"),
 		buttonField("secondaryButton", "Secondary Button"),
 		defineField({
 			name: "image",
 			title: "Image",
-			type: "image",
-			options: { hotspot: true },
-			fields: [defineField({ name: "alt", title: "Alt Text", type: "string" })],
+			type: "internationalizedArrayLocalizableImage",
+			hidden: ({ parent }) => parent?.style === "imageColumns",
+		}),
+		defineField({
+			name: "images",
+			title: "Images",
+			type: "internationalizedArrayLocalizableImageGallery",
+			description:
+				"Add up to 5 images per locale for the staggered column layout.",
+			hidden: ({ parent }) => parent?.style !== "imageColumns",
 		}),
 	],
 	preview: {
 		select: { title: "heading" },
 		prepare({ title }) {
-			return { title: title || "Hero Block", subtitle: "Block: Hero" };
+			const resolved = Array.isArray(title)
+				? (title.find((t) => t.language === "en")?.value ?? title[0]?.value)
+				: title;
+			return { title: resolved || "Hero Block", subtitle: "Block: Hero" };
 		},
 	},
 });

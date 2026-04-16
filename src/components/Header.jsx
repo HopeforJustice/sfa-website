@@ -9,12 +9,15 @@ export default async function Header() {
 
 	return (
 		<>
-			<div className="py-5 lg:py-8 w-full text-white absolute top-0 z-10">
+			<div
+				id="header"
+				className="py-5 lg:py-8 w-full text-white absolute top-0 z-10"
+			>
 				<Container>
 					<div className="flex justify-between">
-						<div className="inline-block w-56 pr-4">
+						<a href="./" className="inline-block w-56 pr-4">
 							<Logo />
-						</div>
+						</a>
 
 						<Nav data={navData} />
 					</div>

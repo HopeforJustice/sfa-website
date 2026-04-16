@@ -1,4 +1,10 @@
-import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
+import {
+	Popover,
+	PopoverBackdrop,
+	PopoverButton,
+	PopoverPanel,
+} from "@headlessui/react";
+import { resolveHref } from "@/lib/resolveHref";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import clsx from "clsx";
 import * as OutlineIcons from "@heroicons/react/24/outline";
@@ -23,6 +29,7 @@ export default function FlyoutMenu({ item }) {
 
 	return (
 		<Popover className="relative">
+			<PopoverBackdrop className="fixed inset-0 z-10" />
 			<PopoverButton className="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 outline-none hover:opacity-80">
 				<span className="text-base">{item.title}</span>
 				<ChevronDownIcon aria-hidden="true" className="h-6 w-6" />
@@ -31,7 +38,7 @@ export default function FlyoutMenu({ item }) {
 			<PopoverPanel
 				transition
 				anchor={{ to: "bottom start", gap: "20px", padding: "16px" }}
-				className="z-10 transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
+				className="z-20 transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
 			>
 				<div
 					className={clsx(
@@ -74,7 +81,7 @@ export default function FlyoutMenu({ item }) {
 												)}
 												<div>
 													<a
-														href={menuItem.href}
+														href={resolveHref(menuItem)}
 														className="font-semibold text-sfa-blue group-hover:text-sfa-orange"
 													>
 														{menuItem.name}

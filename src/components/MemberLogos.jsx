@@ -11,7 +11,7 @@ export default function MemberLogos({ data }) {
 	if (!logos?.length) return null;
 
 	return (
-		<div className="bg-white py-4 sm:py-8">
+		<div className="bg-white">
 			<Container>
 				<div>
 					{heading && (

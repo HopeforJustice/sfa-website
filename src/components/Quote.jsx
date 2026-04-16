@@ -7,13 +7,13 @@ export default function Quote({ data }) {
 	const { companyLogo, quote, personImage, personName, personRole } = data;
 
 	return (
-		<section className="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:px-8">
+		<section className="relative isolate overflow-hidden bg-white px-6 lg:px-8">
 			<div className="mx-auto max-w-2xl lg:max-w-4xl">
 				{companyLogo?.asset && (
 					<img
 						alt={companyLogo.alt || ""}
-						src={urlFor(companyLogo).height(48).url()}
-						className="mx-auto h-12 w-auto"
+						src={urlFor(companyLogo).fit("max").width(300).url()}
+						className="mx-auto max-h-20 w-auto max-w-[200px]"
 					/>
 				)}
 				{quote && (

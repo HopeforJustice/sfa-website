@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import { linkFields } from "../linkFields";
 
 export const videoWithTextBlock = defineType({
 	name: "videoWithTextBlock",
@@ -8,29 +9,32 @@ export const videoWithTextBlock = defineType({
 		defineField({
 			name: "vimeoUrl",
 			title: "Vimeo Embed URL",
-			type: "url",
+			type: "internationalizedArrayLocalizableUrl",
 			description:
 				"The full Vimeo player embed URL (e.g. https://player.vimeo.com/video/...)",
 		}),
 		defineField({
 			name: "videoTitle",
 			title: "Video Title",
-			type: "string",
+			type: "internationalizedArrayString",
 			description: "Used for the iframe title attribute (accessibility)",
 		}),
 		defineField({
 			name: "heading",
 			title: "Heading",
-			type: "text",
-			rows: 3,
+			type: "internationalizedArrayText",
 		}),
 		defineField({
 			name: "primaryButton",
 			title: "Primary Button",
 			type: "object",
 			fields: [
-				defineField({ name: "text", title: "Button Text", type: "string" }),
-				defineField({ name: "href", title: "URL", type: "string" }),
+				defineField({
+					name: "text",
+					title: "Button Text",
+					type: "internationalizedArrayString",
+				}),
+				...linkFields,
 			],
 		}),
 		defineField({
@@ -38,16 +42,23 @@ export const videoWithTextBlock = defineType({
 			title: "Secondary Button",
 			type: "object",
 			fields: [
-				defineField({ name: "text", title: "Button Text", type: "string" }),
-				defineField({ name: "href", title: "URL", type: "string" }),
+				defineField({
+					name: "text",
+					title: "Button Text",
+					type: "internationalizedArrayString",
+				}),
+				...linkFields,
 			],
 		}),
 	],
 	preview: {
 		select: { title: "heading" },
 		prepare({ title }) {
+			const resolved = Array.isArray(title)
+				? (title.find((t) => t.language === "en")?.value ?? title[0]?.value)
+				: title;
 			return {
-				title: title || "Video With Text Block",
+				title: resolved || "Video With Text Block",
 				subtitle: "Block: Video With Text",
 			};
 		},

@@ -21,6 +21,7 @@
 		"react-dom": "^19.2.4",
 		"react-is": "^19.2.4",
 		"sanity": "^5.19.0",
+		"sanity-plugin-internationalized-array": "^5.1.0",
 		"styled-components": "^6.3.12"
 	},
 	"devDependencies": {

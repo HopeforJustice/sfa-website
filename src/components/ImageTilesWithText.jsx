@@ -3,6 +3,7 @@ import Image from "next/image";
 import Button from "./Button";
 import { urlFor } from "@/sanity/lib/image";
 import placeholderImage from "@/app/img/placeholder.svg";
+import { resolveHref } from "@/lib/resolveHref";
 
 // Tile offset classes alternate for the mosaic effect
 const tileOffsets = ["", "-mt-8 lg:-mt-40", "", "-mt-8 lg:-mt-40"];
@@ -22,11 +23,11 @@ export default function ImageTilesWithText({ data }) {
 	} = data;
 
 	return (
-		<div className="overflow-hidden bg-white py-24 sm:py-32">
+		<div className="overflow-hidden bg-white">
 			<Container>
 				<div className="max-w-4xl">
 					{heading && (
-						<h1 className="mt-2 text-4xl font-semibold tracking-tight text-sfa-blue sm:text-5xl text-balance">
+						<h1 className="mt-2 text-4xl font-semibold tracking-tight text-sfa-blue  text-balance">
 							{heading}
 						</h1>
 					)}
@@ -51,7 +52,7 @@ export default function ImageTilesWithText({ data }) {
 						{button?.text && (
 							<Button
 								buttonText={button.text}
-								href={button.href || "#"}
+								href={resolveHref(button)}
 								type="primary"
 							/>
 						)}

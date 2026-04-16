@@ -3,6 +3,7 @@ import Container from "./Container";
 import Button from "./Button";
 import { urlFor } from "@/sanity/lib/image";
 import placeholderImage from "@/app/img/placeholder.svg";
+import { resolveHref } from "@/lib/resolveHref";
 
 export default function ImageWithText({ data }) {
 	if (!data) return null;
@@ -10,7 +11,7 @@ export default function ImageWithText({ data }) {
 	const { eyebrow, heading, body, button, image } = data;
 
 	return (
-		<div className="overflow-hidden mb-20">
+		<div className="overflow-hidden">
 			<Container>
 				<div className="grid grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:grid-cols-2 lg:items-center">
 					<div className="px-6 lg:px-0">
@@ -29,7 +30,7 @@ export default function ImageWithText({ data }) {
 								<p className="mt-6 text-lg/8 text-gray-600 mb-10">{body}</p>
 							)}
 							{button?.text && (
-								<Button buttonText={button.text} href={button.href || "#"} />
+								<Button buttonText={button.text} href={resolveHref(button)} />
 							)}
 						</div>
 					</div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { resolveHref } from "@/lib/resolveHref";
 import {
 	Dialog,
 	DialogPanel,
@@ -12,140 +13,141 @@ import FlyoutMenu from "./FlyoutMenu";
 import { XMarkIcon, Bars3Icon } from "@heroicons/react/24/outline";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 
-const nav = {
-	items: [
-		{ title: "About us", type: "navLink", href: "#" },
-		{ title: "Why partner with us", type: "navLink", href: "#" },
-		{
-			title: "Services",
-			type: "navFlyout",
-			columns: [
-				{
-					title: "Our Services",
-					items: [
-						{
-							name: "Our Full Range of Services",
-							description:
-								"Specialist services delivered by unrivalled experts",
-							href: "#",
-							icon: "RectangleStackIcon",
-						},
-						{
-							name: "Membership",
-							description: "Protect your organisation, supply chain and people",
-							href: "#",
-							icon: "UserGroupIcon",
-						},
-						{
-							name: "Consultancy",
-							description:
-								"Identify good practice and areas for improvement across your operations",
-							href: "#",
-							icon: "ChatBubbleBottomCenterTextIcon",
-						},
-						{
-							name: "Technology Solutions",
-							description: "Future proof your response to modern slavery",
-							href: "#",
-							icon: "ComputerDesktopIcon",
-						},
-					],
-				},
-				{
-					title: "Modern Slavery Training",
-					items: [
-						{
-							name: "What is Modern Slavery?",
-							description:
-								"What modern slavery might look like in your industry and the steps to mitigate the risk",
-							href: "#",
-						},
-						{
-							name: "Taking Action Against Modern Slavery",
-							description:
-								"Delve deeper into the subject and required actions to tackle modern slavery",
-							href: "#",
-						},
-						{
-							name: "Modern Slavery Awareness for Executives",
-							description:
-								"Learn about managing modern slavery risks and issues in operations and supply chains",
-							href: "#",
-						},
-						{
-							name: "Responding to Modern Slavery",
-							description:
-								"Respond effectively to a suspected case of modern slavery",
-							href: "#",
-						},
-					],
-				},
-			],
-		},
-		{
-			title: "Success Stories",
-			type: "navFlyout",
-			columns: [
-				{
-					items: [
-						{
-							name: "Case Studies & Testimonials",
-							description:
-								"Specialist services delivered by unrivalled experts",
-							href: "#",
-							icon: "DocumentMagnifyingGlassIcon",
-						},
-						{
-							name: "Collaborative Groups",
-							description:
-								"Industry groups to improve sector-wide resilience to modern slavery.",
-							href: "#",
-							icon: "UsersIcon",
-						},
-						{
-							name: "Strategic Partnerships",
-							description:
-								"Strategic alliances with prominent companies dedicated to promoting ethical supply chains",
-							href: "#",
-							icon: "RocketLaunchIcon",
-						},
-					],
-				},
-			],
-		},
-		{
-			title: "Resources",
-			type: "navFlyout",
-			columns: [
-				{
-					items: [
-						{
-							name: "News Stories",
-							description:
-								"Stay up to date with the latest research, insights, and stories of increasing resilience against modern slavery",
-							href: "#",
-						},
-						{
-							name: "Anti-Slavery Day",
-							description: "Raise awareness of the issue in your organisation",
-							href: "#",
-						},
-						{
-							name: "Events",
-							description: "Upcoming Slave-Free Alliance events",
-							href: "#",
-						},
-					],
-				},
-			],
-		},
-		{ title: "Contact", type: "navLink", href: "#" },
-		{ title: "Members Area", type: "navButton", href: "#" },
-	],
-};
+// const nav = {
+// 	items: [
+// 		{ title: "About us", type: "navLink", href: "#" },
+// 		{ title: "Why partner with us", type: "navLink", href: "#" },
+// 		{
+// 			title: "Services",
+// 			type: "navFlyout",
+// 			columns: [
+// 				{
+// 					title: "Our Services",
+// 					items: [
+// 						{
+// 							name: "Our Full Range of Services",
+// 							description:
+// 								"Specialist services delivered by unrivalled experts",
+// 							href: "#",
+// 							icon: "RectangleStackIcon",
+// 						},
+// 						{
+// 							name: "Membership",
+// 							description: "Protect your organisation, supply chain and people",
+// 							href: "#",
+// 							icon: "UserGroupIcon",
+// 						},
+// 						{
+// 							name: "Consultancy",
+// 							description:
+// 								"Identify good practice and areas for improvement across your operations",
+// 							href: "#",
+// 							icon: "ChatBubbleBottomCenterTextIcon",
+// 						},
+// 						{
+// 							name: "Technology Solutions",
+// 							description: "Future proof your response to modern slavery",
+// 							href: "#",
+// 							icon: "ComputerDesktopIcon",
+// 						},
+// 					],
+// 				},
+// 				{
+// 					title: "Modern Slavery Training",
+// 					items: [
+// 						{
+// 							name: "What is Modern Slavery?",
+// 							description:
+// 								"What modern slavery might look like in your industry and the steps to mitigate the risk",
+// 							href: "#",
+// 						},
+// 						{
+// 							name: "Taking Action Against Modern Slavery",
+// 							description:
+// 								"Delve deeper into the subject and required actions to tackle modern slavery",
+// 							href: "#",
+// 						},
+// 						{
+// 							name: "Modern Slavery Awareness for Executives",
+// 							description:
+// 								"Learn about managing modern slavery risks and issues in operations and supply chains",
+// 							href: "#",
+// 						},
+// 						{
+// 							name: "Responding to Modern Slavery",
+// 							description:
+// 								"Respond effectively to a suspected case of modern slavery",
+// 							href: "#",
+// 						},
+// 					],
+// 				},
+// 			],
+// 		},
+// 		{
+// 			title: "Success Stories",
+// 			type: "navFlyout",
+// 			columns: [
+// 				{
+// 					items: [
+// 						{
+// 							name: "Case Studies & Testimonials",
+// 							description:
+// 								"Specialist services delivered by unrivalled experts",
+// 							href: "#",
+// 							icon: "DocumentMagnifyingGlassIcon",
+// 						},
+// 						{
+// 							name: "Collaborative Groups",
+// 							description:
+// 								"Industry groups to improve sector-wide resilience to modern slavery.",
+// 							href: "#",
+// 							icon: "UsersIcon",
+// 						},
+// 						{
+// 							name: "Strategic Partnerships",
+// 							description:
+// 								"Strategic alliances with prominent companies dedicated to promoting ethical supply chains",
+// 							href: "#",
+// 							icon: "RocketLaunchIcon",
+// 						},
+// 					],
+// 				},
+// 			],
+// 		},
+// 		{
+// 			title: "Resources",
+// 			type: "navFlyout",
+// 			columns: [
+// 				{
+// 					items: [
+// 						{
+// 							name: "News Stories",
+// 							description:
+// 								"Stay up to date with the latest research, insights, and stories of increasing resilience against modern slavery",
+// 							href: "#",
+// 						},
+// 						{
+// 							name: "Anti-Slavery Day",
+// 							description: "Raise awareness of the issue in your organisation",
+// 							href: "#",
+// 						},
+// 						{
+// 							name: "Events",
+// 							description: "Upcoming Slave-Free Alliance events",
+// 							href: "#",
+// 						},
+// 					],
+// 				},
+// 			],
+// 		},
+// 		{ title: "Contact", type: "navLink", href: "#" },
+// 		{ title: "Members Area", type: "navButton", href: "#" },
+// 	],
+// };
 
 export default function Nav({ data }) {
-	const navItems = data?.items ?? nav.items;
+	if (!data || !data.items) return null;
+	const navItems = data?.items;
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 	return (
 		<>
@@ -164,7 +166,7 @@ export default function Nav({ data }) {
 						) : (
 							<a
 								key={i}
-								href={item.href}
+								href={resolveHref(item)}
 								className="font-bold hover:opacity-80 cursor-pointer"
 							>
 								{item.title}
@@ -233,7 +235,7 @@ export default function Nav({ data }) {
 															<DisclosureButton
 																key={menuItem.name}
 																as="a"
-																href={menuItem.href}
+																href={resolveHref(menuItem)}
 																className="block rounded-lg py-2 pl-6 pr-3 text-sm/7 font-semibold text-gray-900 hover:bg-gray-50"
 															>
 																{menuItem.name}

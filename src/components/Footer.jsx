@@ -1,6 +1,9 @@
 import Logo from "./Logo";
 import { sanityFetch } from "../sanity/lib/live";
 import { FOOTER_QUERY } from "../sanity/lib/queries";
+import { resolveHref } from "@/lib/resolveHref";
+import { getLocale } from "@/lib/locale";
+import LocaleSwitcher from "./LocaleSwitcher";
 
 const social = [
 	{
@@ -28,19 +31,20 @@ const social = [
 ];
 
 export default async function Footer() {
+	const locale = await getLocale();
 	const { data } = await sanityFetch({ query: FOOTER_QUERY });
 	const footerColumns = data?.footerColumns ?? [];
 	const footerSmallPrint = data?.footerSmallPrint;
 
 	return (
-		<footer className="bg-sfa-blue">
+		<footer id="footer" className="bg-sfa-blue">
 			<div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
 				<div className="xl:grid xl:grid-cols-3 xl:gap-8">
 					<div className="space-y-8">
 						<div className="max-w-52">
 							<Logo />
 						</div>
-						<p className="text-balance text-sm/6 text-gray-300">
+						<p className="text-balance text-sm/6 text-gray-200">
 							Part of{" "}
 							<a href="https://hopeforjustice.org" className="underline">
 								Hope for Justice
@@ -51,8 +55,8 @@ export default async function Footer() {
 							{social.map((item) => (
 								<a
 									key={item.name}
-									href={item.href}
-									className="text-gray-400 hover:text-gray-300"
+									href={resolveHref(item)}
+									className="text-gray-200 hover:text-gray-100"
 								>
 									<span className="sr-only">{item.name}</span>
 									<item.icon aria-hidden="true" className="size-6" />
@@ -70,7 +74,7 @@ export default async function Footer() {
 									{column.items?.map((item) => (
 										<li key={item.name}>
 											<a
-												href={item.href}
+												href={resolveHref(item)}
 												className="text-sm/6 text-gray-400 hover:text-white"
 											>
 												{item.name}
@@ -82,13 +86,14 @@ export default async function Footer() {
 						))}
 					</div>
 				</div>
-				<div className="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24">
+				<div className="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
 					{footerSmallPrint && (
 						<p
 							dangerouslySetInnerHTML={{ __html: footerSmallPrint }}
 							className="text-sm/6 text-gray-400 [&>a]:underline"
 						></p>
 					)}
+					<LocaleSwitcher currentLocale={locale} />
 				</div>
 			</div>
 		</footer>

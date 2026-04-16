@@ -1,14 +1,12 @@
-import Container from "./Container";
-import Button from "./Button";
-import Image from "next/image";
+import Container from "../Container";
+import Button from "../Button";
 import { urlFor } from "@/sanity/lib/image";
+import { resolveHref } from "@/lib/resolveHref";
 import { createDataAttribute } from "@sanity/visual-editing/create-data-attribute";
 import placeholderImage from "@/app/img/placeholder.svg";
-import NetworkCanvas from "./NetworkCanvas";
+import NetworkCanvas from "../NetworkCanvas";
 
-export default function Hero({ data, documentId, documentType }) {
-	if (!data) return null;
-
+export default function HeroDefault({ data, documentId, documentType }) {
 	const { eyebrow, heading, body, primaryButton, secondaryButton, image } =
 		data;
 
@@ -29,7 +27,7 @@ export default function Hero({ data, documentId, documentType }) {
 				<NetworkCanvas />
 			</div>
 			<Container>
-				<div className="relative z-10 grid lg:grid-cols-2 gap-16 items-center">
+				<div className="relative z-10 grid lg:grid-cols-2 gap-14 items-center text-pretty">
 					<div className="max-w-2xl">
 						{eyebrow && (
 							<div
@@ -42,7 +40,7 @@ export default function Hero({ data, documentId, documentType }) {
 						{heading && (
 							<h1
 								{...attr("heading")}
-								className="text-4xl sm:text-4xl md:text-5xl font-display font-normal text-white mb-8 leading-tight"
+								className="text-4xl sm:text-4xl md:text-5xl md:text-[2.9rem] font-display font-normal text-white mb-8"
 							>
 								{heading}
 							</h1>
@@ -60,7 +58,7 @@ export default function Hero({ data, documentId, documentType }) {
 								<div {...attr("primaryButton")}>
 									<Button
 										buttonText={primaryButton.text}
-										href={primaryButton.href || "#"}
+										href={resolveHref(primaryButton)}
 										type="primary"
 									/>
 								</div>
@@ -69,7 +67,7 @@ export default function Hero({ data, documentId, documentType }) {
 								<div {...attr("secondaryButton")}>
 									<Button
 										buttonText={secondaryButton.text}
-										href={secondaryButton.href || "#"}
+										href={resolveHref(secondaryButton)}
 										type="secondary"
 									/>
 								</div>

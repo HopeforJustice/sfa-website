@@ -1,6 +1,7 @@
 import Button from "./Button";
 import Container from "./Container";
 import { createDataAttribute } from "@sanity/visual-editing/create-data-attribute";
+import { resolveHref } from "@/lib/resolveHref";
 
 export default function VideoWithText({ data, documentId, documentType }) {
 	if (!data) return null;
@@ -20,7 +21,7 @@ export default function VideoWithText({ data, documentId, documentType }) {
 			: {};
 
 	return (
-		<section className="mb-10 lg:mb-20 bg-white">
+		<section className="bg-white">
 			<Container>
 				<div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
 					{vimeoUrl && (
@@ -42,14 +43,14 @@ export default function VideoWithText({ data, documentId, documentType }) {
 							{primaryButton?.text && (
 								<Button
 									buttonText={primaryButton.text}
-									href={primaryButton.href || "#"}
+									href={resolveHref(primaryButton)}
 									type="primary"
 								/>
 							)}
 							{secondaryButton?.text && (
 								<Button
 									buttonText={secondaryButton.text}
-									href={secondaryButton.href || "#"}
+									href={resolveHref(secondaryButton)}
 									type="secondary"
 									color="dark"
 								/>
